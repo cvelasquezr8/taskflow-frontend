@@ -99,110 +99,113 @@ export const Dashboard: React.FC = () => {
 	};
 
 	return (
-		<div className="space-y-6">
-			<div>
-				<h1 className="text-2xl font-bold text-secondary-900">
+		<div className="space-y-4 sm:space-y-6">
+			{/* Welcome Section */}
+			<div className="text-center sm:text-left">
+				<h1 className="text-xl sm:text-2xl font-bold text-secondary-900">
 					Bienvenido de nuevo, {user?.firstName}!
 				</h1>
-				<p className="text-secondary-600 mt-1">
+				<p className="text-secondary-600 mt-1 text-sm sm:text-base">
 					Aquí está lo que está sucediendo con tus tareas hoy.
 				</p>
 			</div>
 
 			{/* Stats Grid */}
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
 				<Card>
-					<CardContent className="p-6">
-						<div className="flex items-center justify-between">
-							<div>
-								<p className="text-sm font-medium text-secondary-600">
+					<CardContent className="p-3 sm:p-4 lg:p-6">
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+							<div className="mb-2 sm:mb-0">
+								<p className="text-xs sm:text-sm font-medium text-secondary-600">
 									Total de tareas
 								</p>
-								<p className="text-3xl font-bold text-secondary-900">
+								<p className="text-xl sm:text-2xl lg:text-3xl font-bold text-secondary-900">
 									{stats.totalTasks}
 								</p>
 							</div>
-							<CheckSquare className="w-8 h-8 text-primary-600" />
+							<CheckSquare className="w-6 h-6 sm:w-8 sm:h-8 text-primary-600 self-end sm:self-auto" />
 						</div>
 					</CardContent>
 				</Card>
 
 				<Card>
-					<CardContent className="p-6">
-						<div className="flex items-center justify-between">
-							<div>
-								<p className="text-sm font-medium text-secondary-600">
+					<CardContent className="p-3 sm:p-4 lg:p-6">
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+							<div className="mb-2 sm:mb-0">
+								<p className="text-xs sm:text-sm font-medium text-secondary-600">
 									Completadas
 								</p>
-								<p className="text-3xl font-bold text-accent-600">
+								<p className="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-600">
 									{stats.completedTasks}
 								</p>
 							</div>
-							<TrendingUp className="w-8 h-8 text-accent-600" />
+							<TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-accent-600 self-end sm:self-auto" />
 						</div>
 					</CardContent>
 				</Card>
 
 				<Card>
-					<CardContent className="p-6">
-						<div className="flex items-center justify-between">
-							<div>
-								<p className="text-sm font-medium text-secondary-600">
+					<CardContent className="p-3 sm:p-4 lg:p-6">
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+							<div className="mb-2 sm:mb-0">
+								<p className="text-xs sm:text-sm font-medium text-secondary-600">
 									En Progreso
 								</p>
-								<p className="text-3xl font-bold text-primary-600">
+								<p className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary-600">
 									{stats.inProgressTasks}
 								</p>
 							</div>
-							<Clock className="w-8 h-8 text-primary-600" />
+							<Clock className="w-6 h-6 sm:w-8 sm:h-8 text-primary-600 self-end sm:self-auto" />
 						</div>
 					</CardContent>
 				</Card>
 
 				<Card>
-					<CardContent className="p-6">
-						<div className="flex items-center justify-between">
-							<div>
-								<p className="text-sm font-medium text-secondary-600">
+					<CardContent className="p-3 sm:p-4 lg:p-6">
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+							<div className="mb-2 sm:mb-0">
+								<p className="text-xs sm:text-sm font-medium text-secondary-600">
 									Prioridad Alta
 								</p>
-								<p className="text-3xl font-bold text-error-600">
+								<p className="text-xl sm:text-2xl lg:text-3xl font-bold text-error-600">
 									{stats.highPriorityTasks}
 								</p>
 							</div>
-							<AlertCircle className="w-8 h-8 text-error-600" />
+							<AlertCircle className="w-6 h-6 sm:w-8 sm:h-8 text-error-600 self-end sm:self-auto" />
 						</div>
 					</CardContent>
 				</Card>
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
 				{/* Recent Tasks */}
 				<Card>
-					<CardHeader>
-						<CardTitle>Tareas Recientes</CardTitle>
+					<CardHeader className="pb-3 sm:pb-4">
+						<CardTitle className="text-lg sm:text-xl">
+							Tareas Recientes
+						</CardTitle>
 					</CardHeader>
-					<CardContent>
-						<div className="space-y-4">
+					<CardContent className="p-3 sm:p-6 pt-0">
+						<div className="space-y-3 sm:space-y-4">
 							{recentTasks.length === 0 ? (
-								<p className="text-secondary-600 text-center py-4">
+								<p className="text-secondary-600 text-center py-4 text-sm sm:text-base">
 									No se encontraron tareas recientes.
 								</p>
 							) : (
 								recentTasks.map((task) => (
 									<div
 										key={task.id}
-										className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg"
+										className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-secondary-50 rounded-lg gap-2 sm:gap-4"
 									>
-										<div className="flex-1">
-											<h4 className="font-medium text-secondary-900">
+										<div className="flex-1 min-w-0">
+											<h4 className="font-medium text-secondary-900 text-sm sm:text-base truncate">
 												{task.title}
 											</h4>
-											<p className="text-sm text-secondary-600 mt-1">
+											<p className="text-xs sm:text-sm text-secondary-600 mt-1 line-clamp-2">
 												{task.description}
 											</p>
 										</div>
-										<div className="flex items-center space-x-2 ml-4">
+										<div className="flex items-center gap-2 flex-shrink-0">
 											<Badge
 												variant={getPriorityBadgeVariant(
 													task.priority,
@@ -229,19 +232,21 @@ export const Dashboard: React.FC = () => {
 
 				{/* Quick Actions or Additional Stats */}
 				<Card>
-					<CardHeader>
-						<CardTitle>Estadísticas Rápidas</CardTitle>
+					<CardHeader className="pb-3 sm:pb-4">
+						<CardTitle className="text-lg sm:text-xl">
+							Estadísticas Rápidas
+						</CardTitle>
 					</CardHeader>
-					<CardContent>
-						<div className="space-y-4">
+					<CardContent className="p-3 sm:p-6 pt-0">
+						<div className="space-y-3 sm:space-y-4">
 							<div className="flex items-center justify-between p-3 bg-accent-50 rounded-lg">
 								<div className="flex items-center">
-									<Calendar className="w-5 h-5 text-accent-600 mr-3" />
-									<span className="font-medium text-secondary-900">
+									<Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-accent-600 mr-2 sm:mr-3 flex-shrink-0" />
+									<span className="font-medium text-secondary-900 text-sm sm:text-base">
 										Tareas de Hoy
 									</span>
 								</div>
-								<span className="text-lg font-bold text-accent-600">
+								<span className="text-lg sm:text-xl font-bold text-accent-600">
 									{
 										filteredTasks.filter((task) => {
 											if (!task.dueDate) return false;
@@ -258,12 +263,12 @@ export const Dashboard: React.FC = () => {
 
 							<div className="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
 								<div className="flex items-center">
-									<Clock className="w-5 h-5 text-primary-600 mr-3" />
-									<span className="font-medium text-secondary-900">
+									<Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600 mr-2 sm:mr-3 flex-shrink-0" />
+									<span className="font-medium text-secondary-900 text-sm sm:text-base">
 										Tareas Pendientes
 									</span>
 								</div>
-								<span className="text-lg font-bold text-primary-600">
+								<span className="text-lg sm:text-xl font-bold text-primary-600">
 									{stats.pendingTasks}
 								</span>
 							</div>
@@ -271,12 +276,12 @@ export const Dashboard: React.FC = () => {
 							{user?.role === 'admin' && (
 								<div className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
 									<div className="flex items-center">
-										<Users className="w-5 h-5 text-secondary-600 mr-3" />
-										<span className="font-medium text-secondary-900">
+										<Users className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-600 mr-2 sm:mr-3 flex-shrink-0" />
+										<span className="font-medium text-secondary-900 text-sm sm:text-base">
 											Total de Usuarios
 										</span>
 									</div>
-									<span className="text-lg font-bold text-secondary-600">
+									<span className="text-lg sm:text-xl font-bold text-secondary-600">
 										{usersLoading ? (
 											<LoadingSpinner size="sm" />
 										) : (
