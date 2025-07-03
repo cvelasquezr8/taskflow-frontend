@@ -26,7 +26,6 @@ export const taskService = {
 	async getTasks(filters: TaskFilters = {}): Promise<Task[]> {
 		const res = await api.get<Task[]>('/tasks');
 		let tasks = res.data;
-		console.log('Tasks fetched:', tasks);
 
 		if (filters.status) {
 			tasks = tasks.filter((task) => task.status === filters.status);
