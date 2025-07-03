@@ -82,6 +82,7 @@ export const Tasks: React.FC = () => {
 			result = result.filter(
 				(task) =>
 					task.assignedBy == user.id ||
+					task.assignedTo == user.id ||
 					teamMemberIds.includes(task.assignedTo),
 			);
 		}
